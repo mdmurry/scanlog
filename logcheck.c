@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <wiringPi.h>
+
 #define MAX_LINE 1024
 
 void main(void)
@@ -12,6 +14,9 @@ void main(void)
 	unsigned count = 0;
 
 	printf("\nLogCheck - Reading from /var/log/syslog\n");
+
+	wiringPiSetup();
+	pinMode(0,OUTPUT);
 
 	f = fopen("/var/log/syslog","r");
 	if(f == NULL)
